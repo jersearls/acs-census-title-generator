@@ -1,0 +1,17 @@
+Challenge #1 – CSV Manipulation
+
+Language: Ruby
+Starting Dataset: County STD Data (50 individual files), County FIPS csv
+Modules: Ruby has a built in CSV class that will be helpful: http://ruby-doc.org/stdlib-1.9.2/libdoc/csv/rdoc/CSV.html
+
+Using Ruby, write a script to process the 50 individual STD county data files and the County FIPS data.  The output of this script should be a single CSV that includes all data from the 50 individual files with the correct county FIPS information joined onto each record.
+
+Requirements:
+
+1)	Complete the Class definitions in ‘Challenge_1_Data_Classes.rb’.
+•	attr_readers, attr_writers, and attr_accessors are helpful for reading and writing data to instances of Classes and you may want to incorporate them here:  http://www.rubyist.net/~slagell/ruby/accessors.html
+
+2)	Complete the code in Challenge_1_Script.rb to
+•	Read data from the required files
+•	Join the data into one dataset
+•	Write the data to a single file called ‘county_data_full.csv’
