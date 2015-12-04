@@ -165,3 +165,7 @@ def update_statefp(state_id)
 end
 
 county_hash.map { |o| o["properties"]["state_and_county"] = update_statefp(o["properties"]["STATEFP"]) + "-" + o["properties"]["NAME"]}
+
+File.open("test.json","w") do |f|
+  f.write(JSON.pretty_generate(county_hash))
+end
