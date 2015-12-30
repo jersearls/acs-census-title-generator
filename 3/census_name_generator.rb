@@ -23,7 +23,7 @@ column_types = {}
 
 	end
 
-	puts "#{column_types.keys} #{column_types.values.flatten.reverse}"
+	puts column_types.values.flatten.reverse
 
 
 
