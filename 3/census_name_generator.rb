@@ -9,11 +9,23 @@ def load_csv(filename)
     :headers => true, 
     :header_converters => :symbol, 
     :converters => [:all, :blank_to_nil]
-    )
+  ).entries.map { |row| row.to_hash }
 end
 
-testcsv = load_csv('columndatatest.csv')
+$csv = load_csv('columndatatest.csv')
+
+def create_column_types
+column_types = {}
+	
+	$csv.each do |row|
+	puts column_types[row[:column_id]] = 
+	row[:column_id],
+	row[:column_title],
+	row[:parent_column_id]
+	end
+
+end
+
+create_column_types
 
 
-
-binding.pry
