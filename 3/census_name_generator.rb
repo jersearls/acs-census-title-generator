@@ -12,20 +12,20 @@ def load_csv(filename)
   ).entries.map { |row| row.to_hash }
 end
 
-$csv = load_csv('columndatatest.csv')
-
-def create_column_types
+def create_column_types(filename)
 column_types = {}
 	
-	$csv.each do |row|
-	puts column_types[row[:column_id]] = 
+	load_csv(filename).each do |row|
+	column_types[row[:column_id]] = 
 	row[:column_id],
 	row[:column_title],
-	row[:parent_column_id]
+	column_types[row[:parent_column_id]]
 	end
+puts column_types
+#find? need to search for parent
 
 end
 
-create_column_types
+create_column_types('columndatatest.csv')
 
 
