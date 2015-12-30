@@ -23,17 +23,7 @@ column_types = {}
 
 	end
 
-	#puts "#{column_types.keys} #{column_types.values.flatten.reverse}"
-
-	column_array = []
-	column_types.each do |row|
-		column_array << row.keys
-		column_array << row.values.flatten.reverse
-	end
-
-	puts column_array
-	
-
+	puts "#{column_types.keys} #{column_types.values.flatten.reverse}"
 
 
 
