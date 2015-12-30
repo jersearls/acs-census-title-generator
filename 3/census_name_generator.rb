@@ -19,12 +19,19 @@ column_types = {}
 	column_types[row[:column_id]] = 
 	row[:column_title],
 	column_types[row[:parent_column_id]]
-	$full_names = column_types.values.flatten.reverse.join(" ").gsub(/:/,"")
+	
 
 	end
 
-	puts $full_names.class	
+	#puts "#{column_types.keys} #{column_types.values.flatten.reverse}"
 
+	column_array = []
+	column_types.each do |row|
+		column_array << row.keys
+		column_array << row.values.flatten.reverse
+	end
+
+	puts column_array
 	
 
 
