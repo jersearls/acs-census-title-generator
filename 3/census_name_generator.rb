@@ -1,5 +1,5 @@
 require 'csv'
-require 'pry'
+
 
 def load_csv(filename)
   CSV::Converters[:blank_to_nil] = lambda do |field|
@@ -17,12 +17,18 @@ column_types = {}
 	
 	load_csv(filename).each do |row|
 	column_types[row[:column_id]] = 
-	row[:column_id],
 	row[:column_title],
 	column_types[row[:parent_column_id]]
+	$full_names = column_types.values.flatten.reverse.join(" ").gsub(/:/,"")
+
 	end
-puts column_types
-#find? need to search for parent
+
+	puts $full_names.class	
+
+	
+
+
+
 
 end
 
