@@ -45,12 +45,13 @@ processed_titles = column_titles.map { |o|
 		o.flatten.compact.reverse.join
 	}
 
-
+titles = Hash[column_id.zip(processed_titles)]
 
 binding.pry
 
 #########################
 # To do
+#join the two arrays, make a hash? key = id, value = title?
 # Output to a csv with column id | full name
 
 
