@@ -42,7 +42,8 @@ column_id = create_column_id('columndatatest.csv')
 
 #displays an array of only the titles in the correct logical order	
 processed_titles = column_titles.map { |o|
-		o.flatten.compact.reverse.join
+		o.flatten.compact.reverse.join.downcase.
+		gsub(/[^A-Za-z0-9]+/,'_').gsub(/^_/, '').gsub(/_$/, '')
 	}
 
 titles = Hash[column_id.zip(processed_titles)]
