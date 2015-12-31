@@ -31,7 +31,7 @@ end
 column_types = create_column_types('columndatatest.csv')
 
 #displays an array of only the titles in the correct logical order	
-processed_titles = column_types.reverse.map { |o|
+processed_titles = column_types.map { |o|
 		o.flatten.compact.reverse.join
 	}
 
