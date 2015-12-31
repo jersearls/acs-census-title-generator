@@ -1,4 +1,5 @@
 require 'csv'
+require 'pry'
 
 #loads csv file and creates a hash from each row
 def load_csv(filename)
@@ -30,8 +31,13 @@ end
 column_types = create_column_types('columndatatest.csv')
 
 #displays an array of only the titles in the correct logical order	
-	puts column_types.flatten.reverse
+snippets = column_types.reverse.map { |o|
+		o
+	}
 
+puts snippets
+
+binding.pry
 
 #########################
 # Questions:
