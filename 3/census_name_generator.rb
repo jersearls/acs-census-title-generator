@@ -34,6 +34,9 @@ def create_column_id(filename)
 
 end
 
+def create_table_name(filename)
+
+end
 #calls methods with file input
 
 column_titles = create_column_titles('census_column_metadata.csv')
@@ -43,7 +46,7 @@ column_id = create_column_id('census_column_metadata.csv')
 #creates an array of titles in logical order with snakecase formatting	
 processed_titles = column_titles.map { |o|
 		o.flatten.compact.reverse.join.downcase.
-		gsub(/[^A-Za-z0-9]+/,'_').gsub(/^_/, '').gsub(/_$/, '')
+		gsub(/[^A-Za-z0-9,:]+/,'_').gsub(/^_/, '').gsub(/_$/, '')
 	}
 
 titles = Hash[column_id.zip(processed_titles)]
