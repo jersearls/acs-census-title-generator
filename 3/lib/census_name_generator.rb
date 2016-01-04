@@ -58,7 +58,7 @@ end
 def create_title_and_table_id_array
 	table_id = create_table_id('../data/census_column_metadata.csv')
 	title_processor.zip(table_id)
-	
+
 end
 
 #creates a hash with key column_id and [title, table_id] array as value
@@ -72,12 +72,5 @@ end
 
 hash = create_column_id_hash
 
-
-binding.pry
-
-#########################
-# To do
-# Join table names with column titles
-#
 
 
