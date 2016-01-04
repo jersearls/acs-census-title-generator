@@ -34,7 +34,10 @@ def create_column_id(filename)
 
 end
 
-def create_table_name(filename)
+def create_table_id(filename)
+	load_csv(filename).map do |row|
+	row[:table_id]
+	end
 
 end
 
@@ -45,17 +48,29 @@ def title_processor
 
     column_titles = create_column_titles('census_column_metadata.csv')
 
-    column_id = create_column_id('census_column_metadata.csv')
-
-	processed_titles = column_titles.map { |o|
+    processed_titles = column_titles.map { |o|
 		o.flatten.compact.reverse.join.downcase.
 		gsub(/[^A-Za-z0-9,:]+/,'_').gsub(/^_/, '').gsub(/_$/, '')
 	}
-
-	titles = Hash[column_id.zip(processed_titles)]
 end
 
-titles = title_processor
+#creates and array with [title, table_id]
+def create_title_table_id_array
+	table_id = create_table_id('census_column_metadata.csv')
+	title_processor.zip(table_id)
+end
+
+#creates a hash with key column_id and [title, table_id] array as value
+def create_column_id_hash
+
+column_id = create_column_id('census_column_metadata.csv')
+
+hash_w_title_and_table_id = Hash[column_id.zip(create_title_table_id_array)]
+
+end
+
+hash = create_column_id_hash
+
 
 binding.pry
 
