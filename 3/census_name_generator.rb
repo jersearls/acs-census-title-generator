@@ -55,7 +55,7 @@ def title_processor
 end
 
 #creates and array with [title, table_id]
-def create_title_table_id_array
+def create_title_and_table_id_array
 	table_id = create_table_id('census_column_metadata.csv')
 	title_processor.zip(table_id)
 end
@@ -65,9 +65,23 @@ def create_column_id_hash
 
 column_id = create_column_id('census_column_metadata.csv')
 
-hash_w_title_and_table_id = Hash[column_id.zip(create_title_table_id_array)]
+hash_w_title_and_table_id = Hash[column_id.zip(create_title_and_table_id_array)]
 
 end
+
+#creates an array of full table titles
+def create_table_name(filename)
+	load_csv(filename).map do |row|
+	row[:table_title]
+	end
+
+end
+
+#calls and assigns table_name array
+def get_table_name
+	table_name = create_table_name('census_table_metadata.csv')
+end
+
 
 hash = create_column_id_hash
 
