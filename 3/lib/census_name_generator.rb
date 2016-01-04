@@ -54,23 +54,16 @@ def title_processor
 	}
 end
 
-#creates and array with [title, table_id]
-def create_title_and_table_id_array
+#creates and array with [title, table_id, column_id]
+def create_column_data_array
 	table_id = create_table_id('../data/census_column_metadata.csv')
-	title_processor.zip(table_id)
+	column_id = create_column_id('../data/census_column_metadata.csv')
+	[title_processor,table_id,column_id].transpose
 
 end
 
-#creates a hash with key column_id and [title, table_id] array as value
-def create_column_id_hash
 
-column_id = create_column_id('../data/census_column_metadata.csv')
 
-hash_w_title_and_table_id = Hash[column_id.zip(create_title_and_table_id_array)]
-
-end
-
-hash = create_column_id_hash
 
 
 
