@@ -49,8 +49,7 @@ def title_processor
     column_titles = create_column_titles('../data/census_column_metadata.csv')
 
     processed_titles = column_titles.map { |o|
-		o.flatten.compact.reverse.join.downcase.
-		gsub(/[^A-Za-z0-9,:]+/,'_').gsub(/^_/, '').gsub(/_$/, '')
+		o.flatten.compact.reverse.join
 	}
 end
 
