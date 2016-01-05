@@ -58,8 +58,19 @@ end
 def create_column_data_array
 	table_id = create_table_id('../data/census_column_metadata.csv')
 	column_id = create_column_id('../data/census_column_metadata.csv')
+	
 	[title_processor,table_id,column_id].transpose
 
+end
+
+#creates a hash of values for column info
+def create_column_data_hash
+	column_hash = {}
+	
+	create_column_data_array.map do |array|
+	column_hash = {title: array[0], table_id: array[1], 
+		col_id: array[2]}
+	end
 end
 
 
