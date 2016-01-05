@@ -63,8 +63,8 @@ def create_column_data_array
 
 end
 
-#creates a hash of values for column info
-def create_column_data_hash
+#creates an array of hash of values for column info
+def create_column_data
 	column_hash = {}
 	
 	create_column_data_array.map do |array|
