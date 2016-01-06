@@ -1,10 +1,11 @@
 
 require_relative '../lib/column_name_generator.rb'
 require_relative '../lib/full_title_generator.rb'
+
 require 'csv'
 require 'pry'
 
-def create_estimate_hash
+def format_estimate_array
 	titles = reformat_titles
 
 	titles.map do |titles| 
@@ -14,13 +15,10 @@ def create_estimate_hash
 
 		titles[:col_id].slice!(-2) if titles[:col_id][-2] == "0"	
 	end
-
 	return titles
-			
-
 end
 
-def create_margin_of_error_hash
+def format_margin_of_error_array
 	titles = reformat_titles
 
 	titles.map do |titles| 
@@ -36,5 +34,15 @@ def create_margin_of_error_hash
 	return titles
 end
 
+def create_hash(method)
+	titles = method
 
-binding.pry
+	Hash[titles.map do |row|
+		[row[:col_id], row[:title]]
+		end
+	]	
+end
+
+#create_hash(format_estimate_array)
+#create_hash(format_margin_of_error_array)
+
