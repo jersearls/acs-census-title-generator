@@ -14,7 +14,7 @@ def get_table_info
 	create_table_info('../data/census_table_metadata.csv')
 end
 
-
+#creates a new hash key of full_title and concatenates column name and table name
 def combine_columns_and_table_names
 	table_names = get_table_info
 	columns = create_column_data
@@ -24,6 +24,7 @@ def combine_columns_and_table_names
 	return columns
 end
 
+#reformats the hash into three keys and reformats the full_title string into snake_case
 def reformat_titles
 	title_info = combine_columns_and_table_names
 	column_hash = {}
@@ -35,6 +36,3 @@ def reformat_titles
 end
 
 
-
-
-binding.pry
