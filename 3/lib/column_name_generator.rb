@@ -11,7 +11,7 @@ def load_csv(filename)
     :header_converters => :symbol, 
     :converters => [:all, :blank_to_nil]
   ).entries.map { |row| row.to_hash }
-	end
+end
 
 #creates a new hash with the column id as the key and an array containing column title and a 
 #nested array of the parent hash
