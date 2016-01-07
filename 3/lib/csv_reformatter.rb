@@ -20,6 +20,7 @@ end
 
 #Reformats full_title to match CSV table headers. 
 #Inserts "m" for estimate and removes extra 0s
+#Adds string to beginning of titles
 def format_margin_of_error_array
 	titles = reformat_titles
 
