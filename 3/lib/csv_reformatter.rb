@@ -43,6 +43,4 @@ def create_hash(method)
 	]	
 end
 
-#create_hash(format_estimate_array)
-#create_hash(format_margin_of_error_array)
 
