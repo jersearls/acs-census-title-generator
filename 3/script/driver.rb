@@ -5,13 +5,12 @@ require_relative '../lib/csv_generator.rb'
 require 'csv'
 require 'pry'
 
-files = Dir.entries('../data/acs')
-files = files[2..-1]
+files = Dir['../data/acs/*.csv']
 p files
 puts files.length
 
 files.each do |file|
-  csv_header_alteration('../data/acs/'+file)
+  csv_header_alteration(file)
   puts "One more done!"
   p file
 end
