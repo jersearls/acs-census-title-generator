@@ -30,8 +30,10 @@ def reformat_titles
 	column_hash = {}
 	title_info.map do |info| 
 		column_hash = 
-		{title: info[:full_title].downcase.gsub(/[^A-Za-z0-9]+/,'_')
-			.gsub(/^_/, '').gsub(/_$/, ''), 
+		{title: info[:full_title].downcase.gsub(/total/, "tot").gsub(/including/, "incl")
+			.gsub(/population/, "pop").gsub(/years/, "yrs").gsub(/months/, "mos")
+			.gsub(/never/, "nvr")
+			.gsub(/[^A-Za-z0-9]+/,'_').gsub(/^_/, '').gsub(/_$/, ''), 
 			table_id: info[:table_id], col_id: info[:col_id]}
 	end
 	
