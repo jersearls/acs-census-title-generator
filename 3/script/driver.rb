@@ -13,8 +13,8 @@ puts "#{total} Files Found"
 files.each do |file|
   count += 1
   csv_header_alteration(file)
-  puts "Done!"
   p file
+  puts "File re-titled."
   percentage = (count / total.to_f) * 100
   puts "#{sprintf('%.2f', percentage)}% Complete"
 
