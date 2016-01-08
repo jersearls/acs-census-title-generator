@@ -1,6 +1,6 @@
 require_relative '../lib/column_name_generator.rb'
 require_relative '../lib/full_title_generator.rb'
-require_relative '../lib/csv_reformatter.rb'
+require_relative '../lib/title_reformatter.rb'
 require_relative '../lib/csv_generator.rb'
 require 'csv'
 require 'pry'
