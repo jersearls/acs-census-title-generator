@@ -12,9 +12,15 @@ def format_estimate_array
 
 	titles.map do |titles| 
 		titles[:col_id].insert(-4, 'e')
-	  	titles[:col_id].slice!(-3) if titles[:col_id][-3] == "0"
-		titles[:col_id].slice!(-2) if titles[:col_id][-2] == "0"	
+
+	  	if titles[:col_id][-3] == "0" && titles[:col_id][-2] != "0"
+	  		titles[:col_id].slice!(-3)
+		elsif titles[:col_id][-3] == "0" && titles[:col_id][-2] == "0" 
+			titles[:col_id].slice!(-3)
+			titles[:col_id].slice!(-2)
+		end
 	end
+	
 	return titles
 end
 
@@ -26,9 +32,14 @@ def format_margin_of_error_array
 
 	titles.map do |titles| 
 		titles[:col_id].insert(-4, 'm')
-	  	titles[:col_id].slice!(-3) if titles[:col_id][-3] == "0"
-		titles[:col_id].slice!(-2) if titles[:col_id][-2] == "0"
 		titles[:title].insert(0, 'margin_of_error:')
+
+	  	if titles[:col_id][-3] == "0" && titles[:col_id][-2] != "0"
+	  		titles[:col_id].slice!(-3)
+		elsif titles[:col_id][-3] == "0" && titles[:col_id][-2] == "0" 
+			titles[:col_id].slice!(-3)
+			titles[:col_id].slice!(-2)
+		end
 	end
 
 	return titles
