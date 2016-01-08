@@ -13,8 +13,8 @@ def load_csv(filename)
   ).entries.map { |row| row.to_hash }
 end
 
-#creates a new hash with the column id as the key and an array containing column title and a 
-#nested array of the parent hash
+#creates a new hash with the column id as the key and an array containing 
+#column title and a series of nested arrays of the parent column id hash
 def create_column_titles(filename)
 column_titles = {}
 	
@@ -23,7 +23,6 @@ column_titles = {}
 	row[:column_title],
 	column_titles[row[:parent_column_id]]
 	end
-
 end
 
 def create_column_id(filename)
