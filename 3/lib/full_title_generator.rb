@@ -14,7 +14,7 @@ def get_table_info
 	create_table_info('../data/census_table_metadata.csv')
 end
 
-#creates a new hash key of full_title and concatenates column name and table name
+#creates a new hash key of full_title and concatenates column name and table name as its value
 def combine_columns_and_table_names
 	table_names = get_table_info
 	columns = create_column_data
