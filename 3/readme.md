@@ -63,5 +63,47 @@ end
 ```
 
 
-The method reformat_titles in full_title_generator.rb creates a hash of table titles and table id codes from census_table_metadata.csv.
+The method reformat_titles in full_title_generator.rb calls a series of methods in full_title_generator.rb that create a hash of table titles and table id codes from 'census_table_metadata.csv' and combine this title with the title created in column_name generator.rb.
+
+```
+def combine_columns_and_table_names
+	table_names = get_table_info
+	columns = create_column_data
+	columns.each do |column|
+		column[:full_title] = "#{table_names[column[:table_id]]}_#{column[:title]}"
+	end
+	return columns
+end
+```
+
+The column_name_generator.rb creates a row of hashes from the 'census_column_metadata.csv' and by creating a hash lookup of the parent column id, the value containing the title is displayed as well as its parent etc. until parent id is nil.
+
+```
+def create_column_titles(filename)
+column_titles = {}
+	
+	load_csv(filename).map do |row|
+	column_titles[row[:column_id]] =
+	row[:column_title],
+	column_titles[row[:parent_column_id]]
+	end
+end
+
+```
+
+The nested series of arrays created by this process are flattened, created one string with a logical name. 
+
+```
+def title_processor
+
+    column_titles = create_column_titles('../data/census_column_metadata.csv')
+
+    processed_titles = column_titles.map { |o|
+		o.flatten.compact.reverse.join
+	}
+end
+```
+
+Finally, a hash is created that has the newly created title, table id(to allow a hash lookup for table title) and column id as keys. 
+
 
