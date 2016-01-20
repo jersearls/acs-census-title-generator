@@ -27,6 +27,10 @@ private
   end
 
   def self.sequence_number_for(file_path)
-    file_path.match(/.*\/\w\w(\d+)\w\w\.csv/)[1].to_i
+    if match = file_path.match(/.*\/\w+(\d\d\d\d)\w+.csv/)
+      match[1].to_i
+    else
+      raise "Unexpected File Path, can't determine sequence number from: '#{file_path}'"
+    end
   end
 end
