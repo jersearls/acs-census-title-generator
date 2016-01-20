@@ -1,0 +1,15 @@
+require "rake/testtask"
+$:.unshift(File.expand_path(File.join(File.dirname(__FILE__), "lib")))
+
+Rake::TestTask.new do |t|
+  t.libs << 'test'
+  t.pattern = "test/**/test_*.rb"
+end
+
+task :create_table_ddl, :path do |t, args|
+  require "tally"
+
+  puts Tally.table_create_script_from_sequence_csv(args[:path])
+end
+
+task :default => [:test]
