@@ -1,5 +1,6 @@
 require "rake/testtask"
 $:.unshift(File.expand_path(File.join(File.dirname(__FILE__), "lib")))
+require "tally"
 
 Rake::TestTask.new do |t|
   t.libs << 'test'
@@ -7,9 +8,19 @@ Rake::TestTask.new do |t|
 end
 
 task :create_table_ddl, :path do |t, args|
-  require "tally"
-
   puts Tally.table_create_script_from_sequence_csv(args[:path])
+end
+
+task :create_ddl_for_directory, :dir do |t, args|
+  require "fileutils"
+  require "pathname"
+  FileUtils.rm_r("data/dest") rescue nil
+  FileUtils.mkdir_p("data/dest")
+  Dir[File.join(args[:dir], "*.csv")].each do |file|
+    File.open(File.join("data/dest", "#{Pathname.new(file).basename}.sql"), 'w') do |f|
+      f.write(Tally.table_create_script_from_sequence_csv(file))
+    end
+  end
 end
 
 task :default => [:test]
