@@ -1,12 +1,11 @@
+require 'yaml'
+
 module Tally
-  SUBSTITUTIONS = {
-    "total" => "tot",
-    "including" => "incl",
-    "population" => "pop"
-  }
   class Abbreviate
     def initialize
-      @substitutions = SUBSTITUTIONS
+      @substitutions = YAML.load_file(
+        File.join(File.dirname(__FILE__), "../../config/abbreviations.yml")
+      )
     end
 
     def call(s)
