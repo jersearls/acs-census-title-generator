@@ -1,4 +1,5 @@
 require "tally/csv"
+require "tally/abbreviate"
 
 module Tally
   def self.table_create_script_from_sequence_csv(file_path)
@@ -12,6 +13,11 @@ module Tally
       LOCATION '/projects/census/#{sequence_number}'
       tblproperties ("skip.header.line.count"="1");
     SQL
+  end
+
+  def self.abbreviate(s)
+    @abbreviate ||= Abbreviate.new
+    @abbreviate.call(s)
   end
 
 private
