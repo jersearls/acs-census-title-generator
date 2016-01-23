@@ -11,9 +11,9 @@ def csv_header_alteration(file)
 	estimate = create_hash(format_estimate_array)
 	margin = create_hash(format_margin_of_error_array)
 
-	CSV.filter(input, output, :headers => true, 
+	CSV.filter(input, output, :headers => true,
 		:write_headers => true, :return_headers => true) do |row|
-		if row.header_row? 
+		if row.header_row?
 			row.headers.each_with_index do |column_id, i|
 				if estimate.has_key?(column_id)
 					row[i] = estimate[column_id]
@@ -27,3 +27,11 @@ def csv_header_alteration(file)
 	output.close
 
 end
+
+margin = create_hash(format_margin_of_error_array)
+margin.each { |o|
+	if o[1].length > 128
+		puts "ERROR: #{o[1]} is too long at #{o[1].length} characters"
+
+	end
+}
