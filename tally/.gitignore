@@ -1,1 +1,4 @@
 /data/dest
+/.bundle/
+/Gemfile.lock
+/tmp/

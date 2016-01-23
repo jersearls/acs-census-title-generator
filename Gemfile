@@ -1,7 +1,4 @@
 source "https://rubygems.org"
 
-gemspec
-
-gem 'rake'
-gem 'minitest'
+gem 'tally', :path => 'tally'
 gem 'pry'
