@@ -4,9 +4,15 @@ module Tally
     "including" => "incl",
     "population" => "pop"
   }
-  def self.abbreviate(s)
-    s.split('_').map do |word|
-      SUBSTITUTIONS[word] || word
-    end.join('_')
+  class Abbreviate
+    def initialize
+      @substitutions = SUBSTITUTIONS
+    end
+
+    def call(s)
+      s.split('_').map do |word|
+        @substitutions[word] || word
+      end.join('_')
+    end
   end
 end

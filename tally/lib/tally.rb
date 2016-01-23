@@ -15,6 +15,11 @@ module Tally
     SQL
   end
 
+  def self.abbreviate(s)
+    @abbreviate ||= Abbreviate.new
+    @abbreviate.call(s)
+  end
+
 private
 
   def self.column_statements_for(file_path)
