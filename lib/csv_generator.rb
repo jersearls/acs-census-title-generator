@@ -29,9 +29,11 @@ def csv_header_alteration(file)
 end
 
 margin = create_hash(format_margin_of_error_array)
+count = 0
 margin.each { |o|
 	if o[1].length > 128
 		puts "ERROR: #{o[1]} is too long at #{o[1].length} characters"
-
+		count += 1
 	end
 }
+puts "#{count} titles are too long."
