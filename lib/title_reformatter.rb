@@ -32,7 +32,7 @@ def format_margin_of_error_array
 
 	titles.map do |titles|
 		titles[:col_id].insert(-4, 'm')
-		titles[:title].insert(0, 'me_')
+		titles[:title].insert(0, 'm_')
 
 	  	if titles[:col_id][-3] == "0" && titles[:col_id][-2] != "0"
 	  		titles[:col_id].slice!(-3)
