@@ -31,7 +31,7 @@ end
 margin = create_hash(format_margin_of_error_array)
 count = 0
 margin.each { |o|
-	if o[1].length > 128
+	if o[1].length > 256
 		puts "ERROR: #{o[1]} is too long at #{o[1].length} characters"
 		count += 1
 	end
